@@ -32,7 +32,7 @@ function Timer({isPaused,reset,setReset}) {
       }, [isPaused, seconds, minutes]);
 
     return ( 
-        <div className="text-6xl font-bold">
+        <div className="!text-6xl !font-bold">
     
         {minutes.toString().padStart(2, '0')}:
         {seconds.toString().padStart(2, '0')}
