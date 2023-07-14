@@ -1,19 +1,33 @@
 import { useEffect, useState,useRef } from "react";
+import { useQuery } from "react-query";
 import Timer from "./Timer";
 import PlayBar from "./PlayBar";
 
+
+const fetchQuote = async () => {
+   let res = await fetch("https://api.quotable.io/random");
+   res=await res.json();
+
+   return res.content
+ };
+
 function Box() {
 
-    const [sx,setSx]=useState('The only way to do great work is to love what you do.')
+   const { status, data:sx, error,refetch } = useQuery('quotes', fetchQuote, {
+      staleTime: Infinity,
+      cacheTime:Infinity
+    })
     const [win,setWin]=useState(false)
     const [start,setStart]=useState(false)
     const [reset,setReset]=useState(false)
 
-    const handleClick1 = event => {
+    const handleClick1 = async event => {
+      await refetch();
       setStart(true)
     };
 
-    const handleClick2 = event => {
+    const handleClick2 = async event => {
+      await refetch();
       setWin(false)
       setReset(true)
     };
