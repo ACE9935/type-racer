@@ -3,7 +3,6 @@ import { useEffect,useRef,useState } from "react"
 function PlayBar({win,setWin,sx}) {
 
     const text = useRef();
-    const [counter,setCounter]=useState(0)
     const [count,setCount]=useState(0)
     const [word,setWord]=useState(sx.split(" ")[0]+' ')
     const [val,setVal]=useState('')

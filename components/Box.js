@@ -5,10 +5,8 @@ import PlayBar from "./PlayBar";
 
 
 const fetchQuote = async () => {
-   let res = await fetch("https://api.quotable.io/random");
-   res=await res.json();
-
-   return res.content
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  return quotes[randomIndex];
  };
 
 function Box() {
